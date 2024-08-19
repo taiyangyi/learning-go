@@ -1,3 +1,3 @@
-module github.com/taiyangyi/learn-go-with-tests
+module github.com/taiyangyi/learning-go
 
 go 1.21.5
