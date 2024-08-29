@@ -67,6 +67,17 @@ func main() {
 		s string = "hello"
 	)
 
-	fmt.Printf("w = %d,v = %v,s = %s", w, v, s) // w = 100,v = true,s = hello
+	fmt.Printf("w = %d,v = %v,s = %s\n", w, v, s) // w = 100,v = true,s = hello
+
+	///////////////////////////////////////////////////////////////////
+	// Go 不允许不同类型的整型变量进行混合计算,它同样也不会对其进行隐式的自动转换。
+	// invalid operation: a + b (mismatched types int16 and int)
+	//c = a+b
+
+	var m int16 = 5
+	var n int = 8
+	// 如果需要通过编译，对变量a和b进行显式转型
+	k := int64(m) + int64(n)
+	fmt.Printf("Type of k = %T;k = %d\n", k, k) // Type of k = int64;k = 13
 
 }
