@@ -130,8 +130,7 @@ func switchoffallthrough() {
 func switchoftypeassert() {
 	var n any = 1024
 	switch n.(type) {
-	case nil:
-		fmt.Println("n is a nil")
+
 	case int:
 		println("n is a int")
 	case float64:
@@ -144,3 +143,5 @@ func switchoftypeassert() {
 		println("n is invalid")
 	}
 }
+
+// n is a int
