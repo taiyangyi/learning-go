@@ -1,0 +1,12 @@
+app: # 应用基本配置
+  env: local # 环境名称
+  port: 8888 # 服务监听端口号
+  app_name: viper-demo # 应用名称
+  app_url: http://localhost # 应用访问地址
+
+MySQL: # MySQL配置
+  host: 127.0.0.1 # MySQL主机地址
+  port: 3306 # MySQL端口号
+  username: root # MySQL用户名
+  password: 123321
+  db_name: db_viper # MySQL数据库名
