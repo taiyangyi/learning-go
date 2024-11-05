@@ -1,20 +1,32 @@
-
+// 定义服务
+// 指定 protoc 版本
 syntax = "proto3";
 
+// 指定自动生成 Go 代码时的包名
+// option go_package = "path;name";
+// path 表示生成的 Go 文件的存放地址，会自动生成目录
+// name 表示生成的 Go 文件所属的包名
 option go_package = "simple-grpc-demo/proto/helloworld";
 
+
+// 定义包名，防止命名冲突
 package helloworld;
 
 // 定义 Greeter 服务
 service Greeter {
-  // 定义 SayHello 方法
+
+  // 定义 SayHello 方法，接收 HelloRequest 消息，并返回 HelloResponse 消息
   rpc SayHello(HelloRequest) returns(HelloResponse) {}
 }
 
+// 定义 HelloRequest 消息
 message HelloRequest {
+  // name 字段
   string name = 1;
 }
 
+// 定义 HelloResponse 消息
 message HelloResponse {
+  // message 字段
   string message = 1;
 }
