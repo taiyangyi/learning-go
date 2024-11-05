@@ -1,10 +1,10 @@
 module grpc-demo
 
-go 1.23.1
+go 1.21.5
 
 require (
 	google.golang.org/grpc v1.67.1
-	google.golang.org/protobuf v1.34.2
+	google.golang.org/protobuf v1.35.1
 )
 
 require (
