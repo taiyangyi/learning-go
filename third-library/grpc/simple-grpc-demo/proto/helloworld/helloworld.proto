@@ -12,21 +12,24 @@ option go_package = "simple-grpc-demo/proto/helloworld";
 // 定义包名，防止命名冲突
 package helloworld;
 
-// 定义 Greeter 服务
-service Greeter {
-
-  // 定义 SayHello 方法，接收 HelloRequest 消息，并返回 HelloResponse 消息
-  rpc SayHello(HelloRequest) returns(HelloResponse) {}
-}
-
-// 定义 HelloRequest 消息
+// 定义发送请求信息
 message HelloRequest {
-  // name 字段
+  // 定义发送的参数
+  // 参数类型 参数名 标识号（不可重复）
   string name = 1;
 }
 
-// 定义 HelloResponse 消息
+// 定义响应信息
 message HelloResponse {
-  // message 字段
+  // 定义接收的参数
+  // 参数类型 参数名 标识号（不可重复）
   string message = 1;
+}
+
+// 定义 Greeter 服务
+// 此处 rpc 服务的定义，要从服务端的角度去考虑，即接受请求，处理请求并返回响应的一端
+// 可以定义多个服务，每个服务可定义多个接口
+service Greeter {
+  // 定义 SayHello 方法，接收 HelloRequest 消息，并返回 HelloResponse 消息
+  rpc SayHello(HelloRequest) returns(HelloResponse) {}
 }
