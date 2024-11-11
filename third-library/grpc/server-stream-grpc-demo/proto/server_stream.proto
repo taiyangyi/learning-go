@@ -1,0 +1,36 @@
+// 指定 protoc 版本
+syntax = "proto3";
+
+// 指定自动生成 Go 代码是的包名
+option go_package = "server-stream-grpc-demo/proto";
+
+// 定义发送请求信息
+message SimpleRequest {
+    // 定义发送的参数，采用驼峰命名方式，小写加下划线，如：student_name
+    string data = 1;
+}
+
+// 定义响应信息
+message SimpleResponse {
+    // 定义接收的参数
+    // 参数类型 参数名 标识号（不可重复）
+    int32 code = 1;
+    string value = 2;
+}
+
+// 定义接收信息
+message StreamResponse {
+    // 流式响应数据
+    string stream_value = 1;
+}
+
+
+// 定义服务方法
+// 服务端流式 RPC，只要在响应数据前添加 stream 即可
+service StreamServer {
+
+    rpc Route (SimpleRequest) returns (SimpleResponse){};
+
+    // 服务端流式 rpc，在相应数据前添加 stream
+    rpc ListValue (SimpleRequest) returns (stream StreamResponse){};
+}
