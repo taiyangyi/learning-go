@@ -20,7 +20,7 @@ func main() {
 	// 	[]
 	// 切片长度=0,切片容量=0
 
-	// 声明及初始化
+	// 声明及初始化，通过make开辟空间容量
 	sli = make([]int, 3)
 	fmt.Println(sli)
 	fmt.Printf("切片长度=%d,切片容量=%d\n", len(sli), cap(sli))
@@ -33,4 +33,12 @@ func main() {
 	sli[2] = 3
 	fmt.Println(sli)
 	// [1 2 3]
+
+	// 基于现有数组得到一个切片
+	array := [5]int{1, 2, 3, 4, 5}
+	sli2 := array[2:4]
+	fmt.Printf("数组 array 中 array:%v,len:%v,cap:%v\n", array, len(array), cap(array))
+	fmt.Printf("切片 sli2 中 sli2:%v,len:%v,cap:%v\n", sli2, len(sli2), cap(sli2))
+	// 	数组 array 中 array:[1 2 3 4 5],len:5,cap:5
+	// 切片 sli2 中 sli2:[3 4],len:2,cap:3
 }
