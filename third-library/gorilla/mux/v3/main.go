@@ -6,20 +6,35 @@ import (
 	"net/http"
 )
 
-// 匹配域名
 func main() {
 
+	// 创建路由器实例
 	router := mux.NewRouter()
 
-	// 只匹配 www.example.com
-	router.HandleFunc("/", IndexHandler).Host("www.example.com")
-	// http://localhost:8080/
-	// 无法访问网站
+	// 域名匹配
+	router.Host("www.example.com")
+	router.Host("{subdomain:[a-z]+}.example.com}")
 
-	// 动态匹配子路由
-	router.HandleFunc("/home", HomeHandler).Host("{subdomain:[a-z]+}.example.com")
-	// http://localhost:8080/home
-	// 无法访问网站
+	// 前缀匹配
+	router.PathPrefix("/books/")
+	// 方法匹配
+	router.Methods("GET", "POST")
+	// schemes 匹配
+	router.Schemes("http", "https")
+	// Header 头信息匹配
+	router.Headers("Content-Type", "application/json")
+	// 参数匹配
+	router.Queries("key", "value")
+	// 自定义匹配
+	router.MatcherFunc(func(request *http.Request, match *mux.RouteMatch) bool {
+		return request.ProtoMajor == 0
+	})
+
+	// 链式调用
+	router.HandleFunc("/home", HomeHandler).
+		Host("www.example.com").
+		Methods("GET").
+		Schemes("http")
 
 }
 
