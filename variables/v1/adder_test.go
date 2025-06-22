@@ -10,8 +10,8 @@ func TestAdd(t *testing.T) {
 	}
 }
 
-// PS F:\go\goprojects\learning-go\variables\integers> go test -v
+// PS F:\go\goprojects\learning-go\variables\int> go test -v
 // === RUN   TestAdd
 // --- PASS: TestAdd (0.00s)
 // PASS
-// ok      github.com/taiyangyi/learning-go/variables/integers     0.236s
+// ok      github.com/taiyangyi/learning-go/variables/int     0.236s
